@@ -1,15 +1,12 @@
-aws_region = "ap-south-1"
-project_name = "himu-three-tier-lab"
-environment = "lab"
-availability_zone = "ap-south-1a"
+aws_region            = "ap-south-1"
+project_name           = "himu-aws-assignments"
+vpc_cidr               = "10.20.0.0/17"
 
-vpc_cidr = "10.20.0.0/16"
-public_subnet_cidr = "10.20.1.0/24"
-app_subnet_cidr = "10.20.2.0/24"
-middleware_subnet_cidr = "10.20.3.0/24"
-database_subnet_cidr = "10.20.4.0/24"
+public_http_cidrs       = ["0.0.0.0/0"]
 
-instance_type = "t3.micro"
-app_port = 8000
-public_http_cidrs = ["0.0.0.0/0"]
-enable_nat_gateway = true
+public_instance_type    = "t3.micro"
+app_instance_type       = "t3.small"
+middleware_instance_type = "t3.small"
+database_instance_type  = "t3.small"
+
+enable_nat_gateway      = true
