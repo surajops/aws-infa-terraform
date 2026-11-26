@@ -1,52 +1,48 @@
 variable "aws_region" {
-  type    = string
-  default = "ap-south-1"
+  description = "AWS region"
+  type        = string
+  default     = "ap-south-1"
 }
+
 variable "project_name" {
   type    = string
-  default = "himu-three-tier-lab"
+  default = "aws-assignments"
 }
-variable "environment" {
-  type    = string
-  default = "lab"
-}
-variable "availability_zone" {
-  type    = string
-  default = "ap-south-1a"
-}
+
 variable "vpc_cidr" {
-  type    = string
-  default = "10.20.0.0/16"
+  description = "VPC CIDR; /17 provides 32768 addresses"
+  type        = string
+  default     = "10.20.0.0/17"
 }
-variable "public_subnet_cidr" {
-  type    = string
-  default = "10.20.1.0/24"
+
+variable "public_http_cidrs" {
+  description = "Public client CIDRs allowed to reach HTTP"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
 }
-variable "app_subnet_cidr" {
-  type    = string
-  default = "10.20.2.0/24"
-}
-variable "middleware_subnet_cidr" {
-  type    = string
-  default = "10.20.3.0/24"
-}
-variable "database_subnet_cidr" {
-  type    = string
-  default = "10.20.4.0/24"
-}
-variable "instance_type" {
+
+variable "public_instance_type" {
   type    = string
   default = "t3.micro"
 }
-variable "app_port" {
-  type    = number
-  default = 8000
+
+variable "app_instance_type" {
+  type    = string
+  default = "t3.small"
 }
-variable "public_http_cidrs" {
-  type    = list(string)
-  default = ["0.0.0.0/0"]
+
+variable "middleware_instance_type" {
+  type    = string
+  default = "t3.small"
 }
+
+variable "database_instance_type" {
+  type    = string
+  default = "t3.small"
+}
+
 variable "enable_nat_gateway" {
-  type    = bool
-  default = true
+  description = "NAT Gateway incurs hourly and data-processing charges"
+  type        = bool
+  default     = true
 }
